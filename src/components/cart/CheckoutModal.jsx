@@ -10,14 +10,11 @@ export default function CheckoutModal() {
   const dispatch = useCartDispatch()
   const lang = i18n.language?.split('-')[0] || 'es'
 
-  /** Tracks the current screen: 'form' or 'success'. */
   const [step, setStep] = useState('form')
-  /** Holds the checkout form field values. */
   const [form, setForm] = useState({ name: '', phone: '', address: '', payment: 'cash' })
-  /** Randomly generated order number shown on success. */
+  const [errors, setErrors] = useState({}) // <-- Estado para mensajes de error
   const [orderNumber, setOrderNumber] = useState('')
 
-  /** Closes the modal when Escape is pressed. */
   useEffect(() => {
     if (!isCheckoutOpen) return
     const handleKeyDown = (e) => {
@@ -25,36 +22,63 @@ export default function CheckoutModal() {
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCheckoutOpen])
 
   if (!isCheckoutOpen) return null
 
-  /** Generates an order number and transitions to the success screen. */
+  // Función de validación personalizada
+  const validateForm = () => {
+    const newErrors = {}
+    
+    // Validar nombre (mínimo 3 caracteres, sin contar espacios extras)
+    if (!form.name.trim() || form.name.trim().length < 3) {
+      newErrors.name = 'Ingresa un nombre válido (mínimo 3 caracteres)'
+    }
+
+    // Validar teléfono con Expresión Regular (ej: solo números y entre 7 y 15 dígitos)
+    const phoneRegex = /^[0-9\s\+\-]{7,15}$/
+    if (!form.phone.trim() || !phoneRegex.test(form.phone.trim())) {
+      newErrors.phone = 'Ingresa un número de teléfono válido'
+    }
+
+    // Validar dirección (mínimo 5 caracteres)
+    if (!form.address.trim() || form.address.trim().length < 5) {
+      newErrors.address = 'Ingresa una dirección completa'
+    }
+
+    setErrors(newErrors)
+    // Retorna true solo si NO hay errores
+    return Object.keys(newErrors).length === 0
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    // Si la validación falla, detenemos la ejecución aquí
+    if (!validateForm()) return
+
     const num = `#SLICE-${Math.floor(1000 + Math.random() * 9000)}`
     setOrderNumber(num)
     setStep('success')
   }
 
-  /**
-   * Resets the modal state and dispatches cleanup actions.
-   * Clears the cart only if the order was placed.
-   */
   const handleClose = () => {
     if (step === 'success') {
       dispatch({ type: 'CLEAR_CART' })
       dispatch({ type: 'CLOSE_CART' })
     }
     setStep('form')
+    setErrors({})
     setForm({ name: '', phone: '', address: '', payment: 'cash' })
     dispatch({ type: 'CLOSE_CHECKOUT' })
   }
 
-  /** Returns an onChange handler bound to a specific form field. */
   const updateField = (field) => (e) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }))
+    // Limpiamos el error del campo a medida que el usuario escribe
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: null }))
+    }
   }
 
   return (
@@ -73,43 +97,53 @@ export default function CheckoutModal() {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-5">
+            <form onSubmit={handleSubmit} className="p-6 space-y-5" noValidate>
+              {/* Campo Nombre */}
               <div>
                 <label className="block font-body text-sm text-text-muted mb-1.5">{t('checkout.name')}</label>
                 <input
                   type="text"
-                  required
                   value={form.name}
                   onChange={updateField('name')}
                   placeholder={t('checkout.namePlaceholder')}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 font-body text-base text-text-light placeholder-text-muted/50 focus:outline-none focus:border-brand-primary transition-colors"
+                  className={`w-full bg-white/5 border rounded-lg px-3 py-2 font-body text-base text-text-light placeholder-text-muted/50 focus:outline-none transition-colors ${
+                    errors.name ? 'border-red-500' : 'border-white/10 focus:border-brand-primary'
+                  }`}
                 />
+                {errors.name && <p className="text-red-400 text-xs mt-1 font-body">{errors.name}</p>}
               </div>
 
+              {/* Campo Teléfono */}
               <div>
                 <label className="block font-body text-sm text-text-muted mb-1.5">{t('checkout.phone')}</label>
                 <input
                   type="tel"
-                  required
                   value={form.phone}
                   onChange={updateField('phone')}
                   placeholder={t('checkout.phonePlaceholder')}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 font-body text-base text-text-light placeholder-text-muted/50 focus:outline-none focus:border-brand-primary transition-colors"
+                  className={`w-full bg-white/5 border rounded-lg px-4 py-2.5 font-body text-base text-text-light placeholder-text-muted/50 focus:outline-none transition-colors ${
+                    errors.phone ? 'border-red-500' : 'border-white/10 focus:border-brand-primary'
+                  }`}
                 />
+                {errors.phone && <p className="text-red-400 text-xs mt-1 font-body">{errors.phone}</p>}
               </div>
 
+              {/* Campo Dirección */}
               <div>
                 <label className="block font-body text-sm text-text-muted mb-1.5">{t('checkout.address')}</label>
                 <input
                   type="text"
-                  required
                   value={form.address}
                   onChange={updateField('address')}
                   placeholder={t('checkout.addressPlaceholder')}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 font-body text-base text-text-light placeholder-text-muted/50 focus:outline-none focus:border-brand-primary transition-colors"
+                  className={`w-full bg-white/5 border rounded-lg px-4 py-2.5 font-body text-base text-text-light placeholder-text-muted/50 focus:outline-none transition-colors ${
+                    errors.address ? 'border-red-500' : 'border-white/10 focus:border-brand-primary'
+                  }`}
                 />
+                {errors.address && <p className="text-red-400 text-xs mt-1 font-body">{errors.address}</p>}
               </div>
 
+              {/* Métodos de pago */}
               <div>
                 <label className="block font-body text-sm text-text-muted mb-1.5">{t('checkout.paymentMethod')}</label>
                 <div className="grid grid-cols-2 gap-3">
