@@ -23,7 +23,7 @@ export default function Hero() {
           </p>
           <a
             href="#menu"
-            className="mt-8 inline-block bg-brand-primary hover:bg-brand-primary-hover text-texto-oscuro font-heading text-xl px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] uppercase"
+            className="mt-8 inline-block bg-brand-primary hover:bg-brand-hover text-text-light font-heading text-xl px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] uppercase"
           >
             {t('hero.cta')}
           </a>

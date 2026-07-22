@@ -64,7 +64,9 @@
     "newsletterPlaceholder": "Your email",
     "newsletterButton": "Subscribe",
     "copyright": "© 2026 Slice Pizzeria. All rights reserved.",
-    "developedBy": "Developed by Jesus Pupo • WannaDev Studios"
+    "developedBy": "Developed by",
+    "developerName": "Jesus Pupo",
+    "studioName": "WannaDev Studios"
   },
   "experience": {
     "title": "The Slice Experience",

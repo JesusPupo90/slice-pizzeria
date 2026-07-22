@@ -37,7 +37,7 @@ export default function ExperienceSection() {
                     <h3 className="font-heading text-xl text-text-dark">
                       {t(`experience.points.${key}.title`)}
                     </h3>
-                    <p className="font-body text-sm text-texto-secundario mt-1">
+                    <p className="font-body text-sm text-text-muted mt-1">
                       {t(`experience.points.${key}.desc`)}
                     </p>
                   </div>
