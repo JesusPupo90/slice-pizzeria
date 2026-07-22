@@ -82,7 +82,7 @@ export default function CheckoutModal() {
                   value={form.name}
                   onChange={updateField('name')}
                   placeholder={t('checkout.namePlaceholder')}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 font-body text-sm text-text-light placeholder-text-muted/50 focus:outline-none focus:border-brand-primary transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 font-body text-base text-text-light placeholder-text-muted/50 focus:outline-none focus:border-brand-primary transition-colors"
                 />
               </div>
 
@@ -94,7 +94,7 @@ export default function CheckoutModal() {
                   value={form.phone}
                   onChange={updateField('phone')}
                   placeholder={t('checkout.phonePlaceholder')}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 font-body text-sm text-text-light placeholder-text-muted/50 focus:outline-none focus:border-brand-primary transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 font-body text-base text-text-light placeholder-text-muted/50 focus:outline-none focus:border-brand-primary transition-colors"
                 />
               </div>
 
@@ -106,7 +106,7 @@ export default function CheckoutModal() {
                   value={form.address}
                   onChange={updateField('address')}
                   placeholder={t('checkout.addressPlaceholder')}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 font-body text-sm text-text-light placeholder-text-muted/50 focus:outline-none focus:border-brand-primary transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 font-body text-base text-text-light placeholder-text-muted/50 focus:outline-none focus:border-brand-primary transition-colors"
                 />
               </div>
 
