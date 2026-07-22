@@ -20,7 +20,6 @@ export default function Toast() {
       return
     }
 
-    // Si el usuario lo expandió, puedes darle un poco más de tiempo (ej. 5s) antes de cerrarse
     const duration = isExpanded ? 5000 : 3000
     const timer = setTimeout(() => {
       dispatch({ type: 'CLEAR_LAST_ADDED' })
@@ -30,13 +29,13 @@ export default function Toast() {
   }, [lastAdded, isExpanded, dispatch])
 
   const handleViewCart = (e) => {
-    e.stopPropagation() // Evita activar la expansión si toca el botón directamente
+    e.stopPropagation()
     dispatch({ type: 'OPEN_CART' })
     dispatch({ type: 'CLEAR_LAST_ADDED' })
   }
 
   const handleClose = (e) => {
-    e.stopPropagation() // Evita activar la expansión
+    e.stopPropagation()
     dispatch({ type: 'CLEAR_LAST_ADDED' })
   }
 
@@ -47,17 +46,15 @@ export default function Toast() {
   return (
     <div
       onClick={toggleExpand}
-      className={`fixed bottom-0 left-0 right-0 z-50 p-5 bg-surface-charcoal border-t-2 border-brand-primary shadow-2xl transition-all duration-300 ease-out cursor-pointer ${
-        show 
-          ? isExpanded 
-            ? '-translate-y-8 sm:-translate-y-16 pb-8 shadow-brand-primary/20' 
-            : 'translate-y-0' 
-          : 'translate-y-full'
-      } w-full max-w-md mx-auto rounded-t-2xl`}
+      className={`fixed bottom-4 left-0 right-0 z-50 p-4 sm:p-5 bg-surface-charcoal border-2 border-brand-primary shadow-2xl transition-all duration-300 ease-out cursor-pointer w-96 max-w-md mx-auto rounded-2xl ${
+        show
+          ? 'opacity-100 pointer-events-auto ' + 
+            (isExpanded 
+              ? '-translate-y-8 sm:-translate-y-12 pb-8 shadow-brand-primary/20' 
+              : 'translate-y-0')
+          : 'opacity-0 pointer-events-none translate-y-6'
+      }`}
     >
-      {/* Indicador visual de deslizar / desplegar (pequeña barra superior) */}
-      <div className="w-10 h-1 bg-white/20 rounded-full mx-auto mb-3" />
-
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
           <div className="flex-shrink-0 w-10 h-10 rounded-full bg-brand-primary/20 flex items-center justify-center">
@@ -91,7 +88,7 @@ export default function Toast() {
         </div>
       </div>
 
-      {/* Contenido extra que aparece ÚNICAMENTE cuando está expandido */}
+      {/* Contenido extra cuando está expandido */}
       {isExpanded && (
         <div className="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-xs text-text-muted animate-fadeIn">
           <span>{t('cart.itemAddedToOrder')}</span>

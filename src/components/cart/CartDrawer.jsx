@@ -20,14 +20,18 @@ export default function CartDrawer() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [dispatch])
 
+  const handleStartCheckout = () => {
+    dispatch({ type: 'CLOSE_CART' })
+    dispatch({ type: 'OPEN_CHECKOUT' })
+  }
+
   if (!isOpen) return null
   
   return (
     <>
       <div
         className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
-        onClick={() => dispatch({ type: 'UPDATE_QUANTITY', payload: { index, quantity: item.quantity - 1 } })
-}
+        onClick={() => dispatch({ type: 'CLOSE_CART' })}
       />
       <div className="fixed top-0 right-0 h-full w-full max-w-md bg-surface-charcoal border-l border-white/10 z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out">
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
@@ -132,7 +136,10 @@ export default function CartDrawer() {
                 </div>
               </div>
 
-              <button className="w-full bg-brand-primary hover:bg-brand-hover text-text-light font-body font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+              <button
+                onClick={() => dispatch({ type: 'OPEN_CHECKOUT' })}
+                className="w-full bg-brand-primary hover:bg-brand-hover text-text-light font-body font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+              >
                 {t('cart.checkout')}
                 <ArrowRight size={18} />
               </button>

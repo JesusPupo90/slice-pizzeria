@@ -1,6 +1,7 @@
 import { CartProvider } from './context/CartContext'
 import Navbar from './components/layout/Navbar'
 import CartDrawer from './components/cart/CartDrawer'
+import CheckoutModal from './components/cart/CheckoutModal'
 import Toast from './components/ui/Toast'
 import Hero from './components/sections/Hero'
 import MenuSection from './components/sections/MenuSection'
@@ -18,8 +19,9 @@ function App() {
         <ExperienceSection />
         <LocationsSection />
       </main>
-      <Footer />
       <CartDrawer />
+      <CheckoutModal />
+      <Footer />
       <Toast />
     </CartProvider>
   )

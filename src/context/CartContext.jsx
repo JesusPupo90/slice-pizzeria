@@ -82,7 +82,7 @@ function cartReducer(state, action) {
     }
 
     case 'CLEAR_CART':
-      return { ...state, items: [] }
+      return { ...state, items: [], isCheckoutOpen: false, lastAdded: null }
 
     case 'TOGGLE_CART':
       return { ...state, isOpen: !state.isOpen }
@@ -93,6 +93,12 @@ function cartReducer(state, action) {
     case 'CLOSE_CART':
       return { ...state, isOpen: false }
 
+    case 'OPEN_CHECKOUT':
+      return { ...state, isCheckoutOpen: true }
+
+    case 'CLOSE_CHECKOUT':
+      return { ...state, isCheckoutOpen: false }
+
     case 'CLEAR_LAST_ADDED':
       return { ...state, lastAdded: null }
 
@@ -101,7 +107,7 @@ function cartReducer(state, action) {
   }
 }
 
-const initialState = { items: [], isOpen: false, lastAdded: null }
+const initialState = { items: [], isOpen: false, isCheckoutOpen: false, lastAdded: null }
 
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, initialState)
