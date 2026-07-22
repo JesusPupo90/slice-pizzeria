@@ -13,7 +13,6 @@ export default function Toast() {
   const lang = i18n.language?.split('-')[0] || 'es'
   const show = !!lastAdded
 
-  // Reinicia el estado de expansión y gestiona el temporizador
   useEffect(() => {
     if (!lastAdded) {
       setIsExpanded(false)
@@ -88,7 +87,6 @@ export default function Toast() {
         </div>
       </div>
 
-      {/* Contenido extra cuando está expandido */}
       {isExpanded && (
         <div className="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-xs text-text-muted animate-fadeIn">
           <span>{t('cart.itemAddedToOrder')}</span>
