@@ -25,11 +25,13 @@ function cartReducer(state, action) {
           items: state.items.map((i) =>
             i === existing ? { ...i, quantity: i.quantity + 1 } : i
           ),
+          lastAdded: { product, size },
         }
       }
       return {
         ...state,
         items: [...state.items, { product, size, quantity: 1 }],
+        lastAdded: { product, size },
       }
     }
 
@@ -91,12 +93,15 @@ function cartReducer(state, action) {
     case 'CLOSE_CART':
       return { ...state, isOpen: false }
 
+    case 'CLEAR_LAST_ADDED':
+      return { ...state, lastAdded: null }
+
     default:
       return state
   }
 }
 
-const initialState = { items: [], isOpen: false }
+const initialState = { items: [], isOpen: false, lastAdded: null }
 
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, initialState)

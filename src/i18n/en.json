@@ -37,7 +37,9 @@
     "remove": "Remove",
     "quantity": "Quantity",
     "size": "Size",
-    "continueShopping": "Continue Shopping"
+    "continueShopping": "Continue Shopping",
+    "viewCart": "View Cart",
+    "clearCart": "Clear Cart"
   },
   "checkout": {
     "title": "Complete Your Order",

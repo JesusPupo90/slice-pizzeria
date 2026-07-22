@@ -37,7 +37,9 @@
     "remove": "Eliminar",
     "quantity": "Cantidad",
     "size": "Tamaño",
-    "continueShopping": "Seguir Comprando"
+    "continueShopping": "Seguir Comprando",
+    "viewCart": "Ver Carrito",
+    "clearCart": "Vaciar Carrito"
   },
   "checkout": {
     "title": "Completa tu Pedido",
