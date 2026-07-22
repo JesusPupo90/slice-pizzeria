@@ -7,12 +7,14 @@ export default function Toast() {
   const { t, i18n } = useTranslation()
   const { lastAdded, totalItems } = useCart()
   const dispatch = useCartDispatch()
-  
+
+  /** Tracks whether the toast detail section is expanded. */
   const [isExpanded, setIsExpanded] = useState(false)
 
   const lang = i18n.language?.split('-')[0] || 'es'
   const show = !!lastAdded
 
+  /** Auto-dismisses the toast after a timeout — longer when expanded. */
   useEffect(() => {
     if (!lastAdded) {
       setIsExpanded(false)
@@ -27,17 +29,20 @@ export default function Toast() {
     return () => clearTimeout(timer)
   }, [lastAdded, isExpanded, dispatch])
 
+  /** Opens the cart drawer and dismisses the toast. */
   const handleViewCart = (e) => {
     e.stopPropagation()
     dispatch({ type: 'OPEN_CART' })
     dispatch({ type: 'CLEAR_LAST_ADDED' })
   }
 
+  /** Dismisses the toast without navigating. */
   const handleClose = (e) => {
     e.stopPropagation()
     dispatch({ type: 'CLEAR_LAST_ADDED' })
   }
 
+  /** Toggles the expanded detail section of the toast. */
   const toggleExpand = () => {
     setIsExpanded((prev) => !prev)
   }

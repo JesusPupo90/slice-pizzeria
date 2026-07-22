@@ -1,8 +1,11 @@
 import { createContext, useContext, useReducer } from 'react'
 
+/** Holds the full cart state (items, UI flags, computed totals). */
 const CartContext = createContext(null)
+/** Exposes the dispatch function for state mutations. */
 const CartDispatchContext = createContext(null)
 
+/** Resolves the unit price for a cart item based on its product and size. */
 function getItemPrice(item) {
   if (item.product.prices && item.size) {
     return item.product.prices[item.size] ?? 0
@@ -10,6 +13,7 @@ function getItemPrice(item) {
   return item.product.price ?? 0
 }
 
+/** Reducer handling all cart mutations: items, checkout flow, and toast state. */
 function cartReducer(state, action) {
   switch (action.type) {
     case 'ADD_ITEM': {
@@ -70,7 +74,7 @@ function cartReducer(state, action) {
             }
             return item
           })
-          .filter((_, idx) => idx !== index) // Eliminamos el elemento antiguo
+          .filter((_, idx) => idx !== index)
 
         return { ...state, items: updatedItems }
       }
@@ -109,14 +113,17 @@ function cartReducer(state, action) {
 
 const initialState = { items: [], isOpen: false, isCheckoutOpen: false, lastAdded: null }
 
+/** Provides cart state and dispatch to the component tree. */
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, initialState)
 
+  /** Aggregates the monetary subtotal across all items. */
   const subtotal = state.items.reduce(
     (acc, item) => acc + getItemPrice(item) * item.quantity,
     0
   )
 
+  /** Aggregates the total unit count across all items. */
   const totalItems = state.items.reduce(
     (acc, item) => acc + item.quantity,
     0
@@ -133,12 +140,14 @@ export function CartProvider({ children }) {
   )
 }
 
+/** Returns the current cart state. Must be used within CartProvider. */
 export function useCart() {
   const ctx = useContext(CartContext)
   if (!ctx) throw new Error('useCart must be used within CartProvider')
   return ctx
 }
 
+/** Returns the cart dispatch function. Must be used within CartProvider. */
 export function useCartDispatch() {
   const ctx = useContext(CartDispatchContext)
   if (!ctx) throw new Error('useCartDispatch must be used within CartProvider')

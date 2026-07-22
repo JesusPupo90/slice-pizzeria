@@ -47,7 +47,6 @@ export default function ExperienceSection() {
           </div>
 
           <div className="relative">
-            {/* Imagen Principal del Horno / Proceso */}
             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src={ovenImg}
@@ -56,7 +55,6 @@ export default function ExperienceSection() {
               />
             </div>
 
-            {/* Badge flotante destacado en la esquina */}
             <div className="absolute -bottom-6 -left-6 bg-brand-primary text-white p-4 rounded-xl shadow-lg hidden sm:flex items-center gap-3">
               <Flame size={32} className="text-white shrink-0" />
               <div>

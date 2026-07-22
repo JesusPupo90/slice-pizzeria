@@ -9,7 +9,8 @@ export default function CartDrawer() {
   const { isOpen, items, subtotal, totalItems } = useCart()
   const dispatch = useCartDispatch()
   const lang = i18n.language?.split('-')[0] || 'es'
-  
+
+  /** Closes the cart drawer when the Escape key is pressed. */
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -20,6 +21,7 @@ export default function CartDrawer() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [dispatch])
 
+  /** Closes the drawer and opens the checkout modal. */
   const handleStartCheckout = () => {
     dispatch({ type: 'CLOSE_CART' })
     dispatch({ type: 'OPEN_CHECKOUT' })

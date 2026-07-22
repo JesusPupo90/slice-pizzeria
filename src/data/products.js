@@ -46,7 +46,6 @@ export const products = [
   },
 
   // SIDES / ENTRADAS
-  // SIDES / ENTRADAS
   {
     id: "side-fries",
     category: "sides",

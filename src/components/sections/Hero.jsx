@@ -9,10 +9,8 @@ export default function Hero() {
       className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center pt-16"
       style={{ backgroundImage: `url(${heroImg})` }}
     >
-      {/* Overlay para mejorar el contraste del texto */}
       <div className="absolute inset-0 bg-black/30 md:bg-black/60" />
 
-      {/* Contenido (relative y z-10 para quedar sobre el overlay) */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center lg:text-left max-w-2xl">
           <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl leading-tight text-white whitespace-pre-line">

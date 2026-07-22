@@ -10,24 +10,27 @@ export default function CheckoutModal() {
   const dispatch = useCartDispatch()
   const lang = i18n.language?.split('-')[0] || 'es'
 
+  /** Tracks the current screen: 'form' or 'success'. */
   const [step, setStep] = useState('form')
+  /** Holds the checkout form field values. */
   const [form, setForm] = useState({ name: '', phone: '', address: '', payment: 'cash' })
+  /** Randomly generated order number shown on success. */
   const [orderNumber, setOrderNumber] = useState('')
+
+  /** Closes the modal when Escape is pressed. */
   useEffect(() => {
-  if (!isCheckoutOpen) return
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Escape') {
-      handleClose()
+    if (!isCheckoutOpen) return
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') handleClose()
     }
-  }
-
-  window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCheckoutOpen])
 
   if (!isCheckoutOpen) return null
 
+  /** Generates an order number and transitions to the success screen. */
   const handleSubmit = (e) => {
     e.preventDefault()
     const num = `#SLICE-${Math.floor(1000 + Math.random() * 9000)}`
@@ -35,6 +38,10 @@ export default function CheckoutModal() {
     setStep('success')
   }
 
+  /**
+   * Resets the modal state and dispatches cleanup actions.
+   * Clears the cart only if the order was placed.
+   */
   const handleClose = () => {
     if (step === 'success') {
       dispatch({ type: 'CLEAR_CART' })
@@ -45,6 +52,7 @@ export default function CheckoutModal() {
     dispatch({ type: 'CLOSE_CHECKOUT' })
   }
 
+  /** Returns an onChange handler bound to a specific form field. */
   const updateField = (field) => (e) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }))
   }
