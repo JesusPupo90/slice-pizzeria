@@ -1,0 +1,112 @@
+{
+  "navbar": {
+    "logo": "Slice Pizzeria",
+    "menu": "Menu",
+    "experience": "Experience",
+    "locations": "Locations",
+    "cart": "Cart"
+  },
+  "hero": {
+    "title": "Artisan Pizza\nThat Steals Hearts",
+    "subtitle": "Sourdough, fresh ingredients, and the wood-fired oven that gives them the perfect flavor.",
+    "cta": "View Menu & Order Now"
+  },
+  "menu": {
+    "title": "Our Menu",
+    "categories": {
+      "pizzas": "Pizzas",
+      "sides": "Sides",
+      "drinks": "Drinks",
+      "desserts": "Desserts"
+    },
+    "sizes": {
+      "personal": "Personal",
+      "mediana": "Medium",
+      "familiar": "Family"
+    },
+    "addToCart": "Add to Cart",
+    "selectSize": "Select a size"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout": "Place Order",
+    "remove": "Remove",
+    "quantity": "Quantity",
+    "size": "Size",
+    "continueShopping": "Continue Shopping"
+  },
+  "checkout": {
+    "title": "Complete Your Order",
+    "name": "Full Name",
+    "namePlaceholder": "E.g. John Doe",
+    "address": "Address + Apt / Suite",
+    "addressPlaceholder": "E.g. 123 Main St, Apt 4B",
+    "paymentMethod": "Payment Method",
+    "cash": "Cash",
+    "transfer": "Bank Transfer / Zelle",
+    "cashAmount": "How much will you pay? (For change)",
+    "cashAmountPlaceholder": "E.g. 50",
+    "notes": "Additional notes (optional)",
+    "notesPlaceholder": "E.g. No onions, please",
+    "submit": "Confirm Order",
+    "submitting": "Processing..."
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "address": "250 NW 24th St, Miami, FL",
+    "phone": "+1 (786) 555-0192",
+    "email": "hello@slicepizzeria.com",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Your email",
+    "newsletterButton": "Subscribe",
+    "copyright": "© 2026 Slice Pizzeria. All rights reserved.",
+    "developedBy": "Developed by Jesus Pupo • WannaDev Studios"
+  },
+  "experience": {
+    "title": "The Slice Experience",
+    "description": "Every pizza is a work of art made with love. Our sourdough ferments for 48 hours, ingredients are carefully selected, and the wood-fired oven gives them that unmatched smoky touch. Come and live the experience.",
+    "tempValue": "842°F",
+    "tempLabel": "842°F Wood-Fired Oven",
+    "points": {
+      "dough": {
+        "title": "48h Sourdough",
+        "desc": "Slow fermentation for a light texture and unmistakable flavor."
+      },
+      "oven": {
+        "title": "Wood-Fired Stone Oven",
+        "desc": "Perfect cooking that seals in juices and adds natural smokiness."
+      },
+      "ingredients": {
+        "title": "Imported Ingredients",
+        "desc": "We source the best from Italy and local producers for every recipe."
+      }
+    }
+  },
+  "locations": {
+    "title": "OUR LOCATIONS",
+    "subtitle": "Visit us and enjoy the live wood-fired oven experience.",
+    "getDirections": "Get Directions",
+    "items": {
+      "location1": {
+        "name": "Wynwood Downtown",
+        "address": "250 NW 24th St, Miami, FL 33127",
+        "hours": "Mon - Sun: 12:00 PM - 11:00 PM",
+        "phone": "+1 (305) 555-0192"
+      },
+      "location2": {
+        "name": "Brickell Financial",
+        "address": "801 S Miami Ave, Miami, FL 33130",
+        "hours": "Mon - Sun: 12:00 PM - 10:30 PM",
+        "phone": "+1 (305) 555-0144"
+      }
+    }
+  },
+  "language": {
+    "es": "ES",
+    "en": "EN"
+  }
+}

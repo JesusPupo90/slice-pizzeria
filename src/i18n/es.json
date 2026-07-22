@@ -1,0 +1,112 @@
+{
+  "navbar": {
+    "logo": "Slice Pizzeria",
+    "menu": "Menú",
+    "experience": "Experiencia",
+    "locations": "Ubicaciones",
+    "cart": "Carrito"
+  },
+  "hero": {
+    "title": "La Pizza Artesanal\nQue Enamora",
+    "subtitle": "Masa madre, ingredientes frescos y el horno de leña que les da el sabor perfecto.",
+    "cta": "Ver Menú y Ordenar Ahora"
+  },
+  "menu": {
+    "title": "Nuestro Menú",
+    "categories": {
+      "pizzas": "Pizzas",
+      "sides": "Entradas",
+      "drinks": "Bebidas",
+      "desserts": "Postres"
+    },
+    "sizes": {
+      "personal": "Personal",
+      "mediana": "Mediana",
+      "familiar": "Familiar"
+    },
+    "addToCart": "Agregar al Carrito",
+    "selectSize": "Selecciona un tamaño"
+  },
+  "cart": {
+    "title": "Tu Carrito",
+    "empty": "Tu carrito está vacío",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout": "Confirmar Pedido",
+    "remove": "Eliminar",
+    "quantity": "Cantidad",
+    "size": "Tamaño",
+    "continueShopping": "Seguir Comprando"
+  },
+  "checkout": {
+    "title": "Completa tu Pedido",
+    "name": "Nombre Completo",
+    "namePlaceholder": "Ej: Juan Pérez",
+    "address": "Dirección + Barrio / Apto",
+    "addressPlaceholder": "Ej: Cra 10 #23-45, Apto 301",
+    "paymentMethod": "Método de Pago",
+    "cash": "Efectivo",
+    "transfer": "Transferencia / Nequi",
+    "cashAmount": "¿Con cuánto vas a pagar? (Para llevar cambio)",
+    "cashAmountPlaceholder": "Ej: 50000",
+    "notes": "Notas adicionales (opcional)",
+    "notesPlaceholder": "Ej: Sin cebolla, por favor",
+    "submit": "Confirmar Pedido",
+    "submitting": "Procesando..."
+  },
+  "footer": {
+    "navigation": "Navegación",
+    "contact": "Contacto",
+    "address": "Cra 45 #12-34, Ciudad",
+    "phone": "+57 300 123 4567",
+    "email": "hola@slicepizzeria.com",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Tu correo electrónico",
+    "newsletterButton": "Suscribirse",
+    "copyright": "© 2026 Slice Pizzeria. Todos los derechos reservados.",
+    "developedBy": "Desarrollado por Jesus Pupo • WannaDev Studios"
+  },
+  "experience": {
+    "title": "La Experiencia Slice",
+    "description": "Cada pizza es una obra de arte hecha con amor. Nuestra masa madre fermenta 48 horas, los ingredientes son seleccionados cuidadosamente y el horno de leña les da ese toque ahumado inigualable. Ven y vive la experiencia.",
+    "tempValue": "450°C",
+    "tempLabel": "450°C Horno de Piedra y Leña",
+    "points": {
+      "dough": {
+        "title": "Masa Madre 48h",
+        "desc": "Fermentación lenta para una textura ligera y un sabor inconfundible."
+      },
+      "oven": {
+        "title": "Horno de Piedra y Leña",
+        "desc": "Cocción perfecta que sella los jugos y aporta un ahumado natural."
+      },
+      "ingredients": {
+        "title": "Ingredientes Importados",
+        "desc": "Seleccionamos lo mejor de Italia y productores locales para cada receta."
+      }
+    }
+  },
+  "locations": {
+    "title": "NUESTRAS SEDES",
+    "subtitle": "Visítanos y vive la experiencia del horno de leña en vivo.",
+    "getDirections": "Cómo llegar",
+    "items": {
+      "location1": {
+        "name": "Sede El Poblado",
+        "address": "Calle 10 # 43E-12, Medellín",
+        "hours": "Lun - Dom: 12:00 PM - 11:00 PM",
+        "phone": "+57 (604) 444-8990"
+      },
+      "location2": {
+        "name": "Sede Laureles",
+        "address": "Transversal 39 # 76-15, Medellín",
+        "hours": "Lun - Dom: 12:00 PM - 10:30 PM",
+        "phone": "+57 (604) 444-8991"
+      }
+    }
+  },
+  "language": {
+    "es": "ES",
+    "en": "EN"
+  }
+}
